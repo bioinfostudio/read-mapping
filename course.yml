@@ -1,0 +1,21 @@
+chunks:
+
+-
+    title: "Welcome to the read mapping course"
+    id: welcome
+    rules:
+    -
+        weight: 100
+
+    -
+        weight: 0
+
+    content: |
+
+        # NGS Read Mapping
+
+        - Perform a simple NGS data alignment task, with Bowtie2, against one interested reference data
+        - Interpret and manipulate the mapping output using SAMtools
+        - Visualise the alignment via a standard genome browser, e.g. IGV browser
+
+        <i class="fab fa-creative-commons"></i> / by Myrto Kostadima, Xi (Sean) Li

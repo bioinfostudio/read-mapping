@@ -1,0 +1,96 @@
+title: "NGS Read Mapping"
+description: |
+
+    # NGS Read Mapping
+
+rules:
+    start:
+    -
+        if_has_role: [student, ta, instructor]
+        if_has_fewer_sessions_than: 4
+        may_start_new_session: True
+        may_list_existing_sessions: True
+
+    -
+        may_start_new_session: False
+        may_list_existing_sessions: True
+
+    access:
+    -
+        permissions: [view, submit_answer, end_session, see_correctness, see_answer_after_submission]
+
+    grade_identifier: mapping 
+    grade_aggregation_strategy: use_latest
+
+    grading:
+    -
+        credit_percent: 100
+
+groups:
+-
+    id: mapping
+    shuffle: False
+    pages:
+    -
+        type: TerminalQuestion
+        id: intro
+        cid: mapping
+        title: Introduction
+        prompt: |
+
+            {% include "markdowns/01_introduction.md" %}
+    -
+        type: TerminalQuestion
+        id: algin 
+        cid: alignment 
+        title: Prepare the environment
+        prompt: |
+
+            {% include "markdowns/02_alignment.md" %}
+    -
+        type: TextQuestion
+        id: chrom 
+        cid: sam
+        value: 5
+        title: Mapped chromosome 
+        prompt: |
+
+          # To which chromosome are the reads mapped?
+
+        answers:
+
+          - <plain> 1 
+    -
+        type: TerminalQuestion
+        id: visualize
+        cid: sam
+        title: Manipulate SAM output
+        prompt: |
+
+            {% include "markdowns/03_visualization.md" %}
+    -
+        type: InlineMultiQuestion
+        id: nucleotide 
+        cid: sam
+        value: 10
+        title: The different colors mean? 
+        prompt: |
+
+            Using the `+` button on the top right, zoom in to see more of the
+            details of the alignments.
+
+            ## What do you think the different colors mean?
+
+        question: |
+
+            The different color represents four [[blank1]]
+
+        answers:
+
+            blank1:
+                type: ShortAnswer
+                width: 10em
+                required: True
+                hint: e.g. blue is Cytidine (C), red is Thymidine (T).
+                correct_answer:
+                - <plain> nucleotides 
