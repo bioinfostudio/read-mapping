@@ -78,7 +78,7 @@ The header line starts with the letter ‘@’, i.e.:
   ----- ------------ -------------- ---------- ----------------------------------------------------------------------------------------------------------
   @HD   VN:1.0       SO:unsorted               
   @SQ   SN:chr1      LN:195471971              
-  @PG   ID:Bowtie2   PN:bowtie2     VN:2.2.4   CL:“/tools/bowtie2/bowtie2-default/bowtie2-align-s –wrapper basic-0 -x bowtie\_index/mm10 -q Oct4.fastq”
+  @PG   ID:Bowtie2   PN:bowtie2     VN:2.2.4   CL:“/usr/bin/bowtie2-align-s --wrapper basic-0 -x bowtie\_index/mm10 -q Oct4.fastq”
   ----- ------------ -------------- ---------- ----------------------------------------------------------------------------------------------------------
 
 While, the actual alignments start with read id, i.e.:

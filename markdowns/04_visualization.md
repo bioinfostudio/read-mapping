@@ -1,27 +1,3 @@
-## Manipulate SAM output
-
-SAM files are rather big and when dealing with a high volume of NGS
-data, storage space can become an issue. As we have already seen, we can
-convert SAM to BAM files (their binary equivalent that are not human
-readable) that occupy much less space.
-
-Convert SAM to BAM using `samtools view` and store the output in the
-file `Oct4.bam`. You have to instruct `samtools view` that the input is
-in SAM format (`-S`), the output should be in BAM format (`-b`) and that
-you want the output to be stored in the file specified by the `-o`
-option:
-
-```bash
-mapping$ samtools view -bSo Oct4.bam Oct4.sam
-```
-
-Compute summary stats for the Flag values associated with the alignments
-using:
-
-```bash
-mapping$ samtools flagstat Oct4.bam
-```
-
 ## Visualize alignments in IGV
 
 IGV is a stand-alone genome browser. Please check their [website](<http://www.broadinstitute.org/igv/>) for all the formats that IGV can
@@ -63,7 +39,7 @@ into a bigWig binary file called `Oct4.bw`, using `bedGraphToBigWig`
 from the UCSC tools:
 
 ```bash
-mapping$ genomeCoverageBed -bg -ibam Oct4.sorted.bam -g bowtie_index/mouse.mm10.genome > Oct4.bedgraph
+mapping$ genomeCoverageBed -bg -ibam Oct4.sorted.bam > Oct4.bedgraph
 mapping$ bedGraphToBigWig Oct4.bedgraph bowtie_index/mouse.mm10.genome Oct4.bw
 ```
 
@@ -79,27 +55,6 @@ the chromosomes (or scaffolds, etc.) and their size (in basepairs).
 BEDTools includes pre-defined genome files for human and mouse in the
 `genomes` subdirectory included in the BEDTools distribution.
 
-Now we will load the data into the IGV browser for visualization. In
-order to launch IGV double click on the `IGV 2.3` icon on your Desktop.
-Ignore any warnings and when it opens you have to load the genome of
-interest.
-
-On the top left of your screen choose from the drop down menu
-`Mouse (mm10)`. If it doesn’t appear in list, click `More ..`, type
-`mm10` in the Filter section, choose the mouse genome and press OK. Then
-in order to load the desire files go to:
-
-    File > Load from File
-
-On the pop up window navigate to Desktop -> chipseq folder and select
-the file `Oct4.sorted.bam`.
-
-Repeat these steps in order to load `Oct4.bw` as well.
-
-Select `chr1` from the drop down menu on the top left. Right click on
-the name of `Oct4.bw` and choose Maximum under the Windowing Function.
-Right click again and select Autoscale.
-
 In order to see the aligned reads of the BAM file, you need to zoom in
 to a specific region. For example, look for gene `Lemd1` in the search
 box.
@@ -107,3 +62,35 @@ box.
 ### The main difference between the visualization of BAM and bigWig files
 
 The actual alignment of reads that stack to a particular region can be displayed using the information stored in a BAM format. The bigWig format is for display of dense, continuous data that will be displayed in the Genome Browser as a graph.
+
+<div id="igv-div"/>
+
+<script type="text/javascript">
+  var igvDiv = document.getElementById("igv-div");
+  var options =
+    {
+        genome: "mm10",
+        locus: "Chr1",
+        tracks: [
+            {
+                type: "alignment",
+                format: "bam",
+                name: "BAM",
+                url: "gs://bioinfostudio/mapping/data/Oct4.sorted.bam",
+                indexURL: "gs://bioinfostudio/mapping/data/Oct4.sorted.bam.bai",
+            },
+            {
+                type: "wig",
+                format: "bigwig",
+                name: "BigWig",
+                url: "gs://bioinfostudio/mapping/data/Oct4.bw",
+                indexed: false,
+            },
+        ]
+    };
+        
+    igv.createBrowser(igvDiv, options)
+            .then(function (browser) {
+                console.log("Created IGV browser");
+            })
+</script>
