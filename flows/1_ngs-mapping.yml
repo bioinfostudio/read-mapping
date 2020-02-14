@@ -122,11 +122,7 @@ groups:
                         },
                     ]
                 };
-
                 igv.createBrowser(igvDiv, options)
-                        .then(function (browser) {
-                            console.log("Created IGV browser");
-                        })
             </script>
 
         question: |

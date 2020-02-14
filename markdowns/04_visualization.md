@@ -89,7 +89,4 @@ The actual alignment of reads that stack to a particular region can be displayed
         ]
     };
     igv.createBrowser(igvDiv, options)
-            .then(function (browser) {
-                console.log("Created IGV browser");
-            })
 </script>
