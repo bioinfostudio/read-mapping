@@ -1,6 +1,6 @@
 ## Introduction
 
-The goal of this hands-on session is to perform an unspliced alignment
+The goal of this session is to perform an unspliced alignment
 for a small subset of raw reads. We will align raw sequencing data to
 the mouse genome using Bowtie2 and then we will manipulate the SAM output in order to visualize the alignment on the IGV browser.
 
