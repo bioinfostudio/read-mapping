@@ -59,11 +59,11 @@ In order to see the aligned reads of the BAM file, you need to zoom in
 to a specific region. For example, look for gene `Lemd1` in the search
 box.
 
+<div id="igv-div"></div>
+
 ### The main difference between the visualization of BAM and bigWig files
 
 The actual alignment of reads that stack to a particular region can be displayed using the information stored in a BAM format. The bigWig format is for display of dense, continuous data that will be displayed in the Genome Browser as a graph.
-
-<div id="igv-div"/>
 
 <script type="text/javascript">
   var igvDiv = document.getElementById("igv-div");
@@ -88,7 +88,6 @@ The actual alignment of reads that stack to a particular region can be displayed
             },
         ]
     };
-        
     igv.createBrowser(igvDiv, options)
             .then(function (browser) {
                 console.log("Created IGV browser");
