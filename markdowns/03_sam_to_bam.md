@@ -22,3 +22,4 @@ using:
 mapping$ samtools flagstat Oct4.bam
 ```
 
+[Samtools](http://www.htslib.org/doc/samtools.html)

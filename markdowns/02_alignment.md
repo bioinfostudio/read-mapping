@@ -2,8 +2,7 @@
 
 You already know that there are a number of competing tools for short
 read alignment, each with its own set of strengths, weaknesses, and
-caveats. Here we will try Bowtie2, a widely used ultrafast, memory
-efficient short read aligner.
+caveats. Here we will try [Bowtie2](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml), a widely used ultrafast, memory efficient short read aligner.
 
 Bowtie2 has a number of parameters in order to perform the alignment. To view them all type
 

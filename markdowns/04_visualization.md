@@ -1,6 +1,6 @@
 ## Visualize alignments in IGV
 
-IGV is a stand-alone genome browser. Please check their [website](<http://www.broadinstitute.org/igv/>) for all the formats that IGV can
+IGV is a genome browser. Please check their [website](https://software.broadinstitute.org/software/igv/) for all the formats that IGV can
 display. For our visualization purposes we will use the BAM and bigWig formats.
 
 When uploading a BAM file into the genome browser, the browser will look
@@ -34,20 +34,20 @@ files are in an indexed binary format.
 
 The BAM to bigWig conversion takes place in two steps. Firstly, we
 convert the BAM file into a bedgraph, called `Oct4.bedgraph`, using the
-tool `genomeCoverageBed` from BEDTools. Then we convert the bedgraph
+tool `genomeCoverageBed` from [BEDTools](https://bedtools.readthedocs.io/en/latest/). Then we convert the bedgraph
 into a bigWig binary file called `Oct4.bw`, using `bedGraphToBigWig`
-from the UCSC tools:
+from [the UCSC tools](http://hgdownload.soe.ucsc.edu/downloads.html#utilities_downloads):
 
 ```bash
 mapping$ genomeCoverageBed -bg -ibam Oct4.sorted.bam > Oct4.bedgraph
 mapping$ bedGraphToBigWig Oct4.bedgraph bowtie_index/mouse.mm10.genome Oct4.bw
 ```
 
-Both of the commands above take as input a file called
+The commands above take as input a file called
 `mouse.mm10.genome` that is stored under the subdirectory
 `bowtie_index`. These genome files are tab-delimited and describe the
 size of the chromosomes for the organism of interest. When using the
-UCSC Genome Browser, Ensembl, or Galaxy, you typically indicate which
+[UCSC Genome Browser](https://genome.ucsc.edu/index.html), [Ensembl](https://www.ensembl.org/), or [Galaxy](https://usegalaxy.org/), you typically indicate which
 species/genome build you are working with. The way you do this for
 BEDTools is to create a “genome” file, which simply lists the names of
 the chromosomes (or scaffolds, etc.) and their size (in basepairs).
