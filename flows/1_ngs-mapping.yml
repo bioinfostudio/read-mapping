@@ -42,7 +42,7 @@ groups:
     -
         type: TerminalQuestion
         id: algin
-        cid: alignment
+        cid: align
         title: Alignment 
         prompt: |
 
